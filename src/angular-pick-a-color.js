@@ -8,17 +8,13 @@
 angular.module('pickAColor', [])
     .directive('pickAColor', function ($parse) {
         return {
-            scope: {
-                value: "="
-            },
             restrict: 'E',
             compile: function (element, attrs) {
-                var modelAccessor = $parse(attrs.ngModel);
+                var model = $parse(attrs.ngModel);
 
                 // Compile the HTML template
                 var html = "<input type='text' id='" + attrs.id + "'" +
                     "name='" + attrs.name + "'" +
-                    "value='" + attrs.value + "'" +
                     "' class='pick-a-color form-control'>" +
                     "</input>";
 
@@ -56,6 +52,9 @@ angular.module('pickAColor', [])
                         options.allowBlank = attrs.allowBlank;
                     }
 
+                    // Set the value before we initialise the picker
+                    element.val(model(scope));
+
                     // Create the 'pick-a-color control
                     element.pickAColor(
                         options
@@ -63,12 +62,10 @@ angular.module('pickAColor', [])
 
                     // Handle changes to the value
                     element.on("change", function () {
-                        console.log($(this).val());
-
                         var value = $(this).val();
                         scope.$apply(function (scope) {
                             // Change bound variable
-                            modelAccessor.assign(scope.value, value);
+                            model.assign(scope, value);
                         });
                     });
                 };
