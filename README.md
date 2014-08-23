@@ -6,5 +6,5 @@ https://github.com/lauren/pick-a-color
 
 usage:
 ```
-   <pick-a-color id="inputColor" ng-model="model.color" inline-dropdown="true"></pick-a-color>
+<pick-a-color id="inputColor" ng-model="model.color" inline-dropdown="true"></pick-a-color>
 ```
