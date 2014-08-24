@@ -6,7 +6,24 @@
  * See https://github.com/lauren/pick-a-color for the excellent color picker
  */
 angular.module('pickAColor', [])
-    .directive('pickAColor', function ($parse) {
+    .provider("pickAColor", function() {
+        this.options = {};
+
+        this.$get = function () {
+            var localOptions = this.options;
+            return {
+                getOptions: function () {
+                    return localOptions;
+                }
+            };
+        };
+
+        this.setOptions = function (options) {
+            this.options = options;
+        };
+    })
+
+    .directive('pickAColor', function ($parse, pickAColor) {
         return {
             restrict: 'E',
             compile: function (element, attrs) {
@@ -23,7 +40,7 @@ angular.module('pickAColor', [])
 
                 return function (scope, element, attrs, controller) {
                     // Process options
-                    var options = {};
+                    var options = pickAColor.getOptions();
                     if (attrs.inlineDropdown != null) {
                         options.inlineDropdown = attrs.inlineDropdown;
                     }
