@@ -9,10 +9,11 @@ usage:
 <pick-a-color id="inputColor" ng-model="model.color" inline-dropdown="true"></pick-a-color>
 ```
 
+
 To set default options, you can use the configuration provider in your apps config method -:
 
 ```
-.config(function myAppConfig($stateProvider, $urlRouterProvider, growlProvider, pickAColorProvider) {
+.config(function myAppConfig(pickAColorProvider) {
     pickAColorProvider.setOptions({
         inlineDropdown: true
     });
