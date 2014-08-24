@@ -4,6 +4,12 @@ AngularJS directive for the pick-a-color JQuery plugin.
 
 https://github.com/lauren/pick-a-color
 
+Installation:
+Install with bower:
+```
+bower install angular-pick-a-color --save
+```
+
 Usage:
 Include the ```'pickAColor'``` module in your application and use the following directive in your html. 
 pick-a-color options can be placed in the definition as shown below.
