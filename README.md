@@ -4,11 +4,12 @@ AngularJS directive for the pick-a-color JQuery plugin.
 
 https://github.com/lauren/pick-a-color
 
-usage:
-Include the ```'pickAColor'``` module in your application.
+Usage:
+Include the ```'pickAColor'``` module in your application and use the following directive in your html. 
+pick-a-color options can be placed in the definition as shown below.
 
 ```
-<pick-a-color id="inputColor" ng-model="model.color" inline-dropdown="true"></pick-a-color>
+<pick-a-color id="inputColor" ng-model="color" inline-dropdown="true"></pick-a-color>
 ```
 
 
