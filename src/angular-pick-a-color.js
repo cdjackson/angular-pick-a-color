@@ -32,7 +32,7 @@ angular.module('pickAColor', [])
                 // Compile the HTML template
                 var html = "<input type='text' id='" + attrs.id + "'" +
                     "name='" + attrs.name + "'" +
-                    "' class='pick-a-color form-control'>" +
+                    "' class='disabled pick-a-color form-control'>" +
                     "</input>";
 
                 var newElem = $(html);
@@ -80,6 +80,10 @@ angular.module('pickAColor', [])
                     // Handle changes to the value
                     element.on("change", function () {
                         var value = $(this).val();
+
+                        // This probably should be needed, but currently pick-a-color doesn't close on enter
+                        // so we end up with an unvalidated value
+                        value = tinycolor(value).toHex();
                         scope.$apply(function (scope) {
                             // Change bound variable
                             model.assign(scope, value);
