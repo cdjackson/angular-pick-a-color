@@ -81,9 +81,9 @@ angular.module('pickAColor', [])
                     element.on("change", function () {
                         var value = $(this).val();
 
-                        // This probably should be needed, but currently pick-a-color doesn't close on enter
+                        // This probably shouldn't be needed, but currently pick-a-color doesn't close on enter
                         // so we end up with an unvalidated value
-                        value = tinycolor(value).toHex();
+                        value = tinycolor(value).toHexString();
                         scope.$apply(function (scope) {
                             // Change bound variable
                             model.assign(scope, value);
